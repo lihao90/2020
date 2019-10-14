@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    button{
+      width:100px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    #canvas{
+      background:black;
+    }
+
+    #draw{
+      position: fixed;
+      right:0;
+      top:0;
+      width:49%;
+      height:600px;
+    }
+
+    #draw .wrapper{
+      margin:0;
+      width:100%;
+    }
+  </style>
+  <link rel="stylesheet" href="./public/css/reset.css" />
+  <link rel="stylesheet" href="./public/css/bootstrap.css" />
+  <link rel="stylesheet" href="./public/css/app.css" />
+</head>
+<body>
+  <canvas id="canvas" width="515" height="300"></canvas>
+  <div>
+    <button data-color="yellow" style="background: yellow;">yellow</button>
+    <button data-color="red" style="background: red;">red</button>
+    <button data-color="blue" style="background: blue;">blue</button>
+    <button data-color="green" style="background: green;">green</button>
+    <button data-color="white" style="background: white;">white</button>
+  </div>
+  <div>
+    <button data-linewidth="4">4px</button>
+    <button data-linewidth="8">8px</button>
+    <button data-linewidth="16">16px</button>
+  </div>
+  <div>
+    <button data-background="black" style="background: black;color:white">背景black</button>
+    <button data-background="rgb(255,0,255)" style="background: rgb(255,0,255);">背景pink</button>
+  </div>
+  <div>
+    <button id="play" style="background: black;color:white">我来画</button>
+  </div>
+  <div id="draw">
+    <div class="wrapper">
+      <!-- 显示聊天记录的内容 -->
+      <div class="content" id="chat">
+        <ul id="chat_conatiner"></ul>
+      </div>
+    
+      <!-- 聊天框 + 按钮 -->
+      <div class="action">
+        <textarea id="content"></textarea>
+        <button class="btn btn-success" id="clear">清屏</button>
+        <button class="btn btn-success" id="send">发送</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script src="./node_modules/socket.io-client/dist/socket.io.min.js"></script>
+<script src="./public/js/client.js"></script>
+<script>
+  var canvas = document.getElementById("canvas");
+
+
+  //构建一个画布
+  var ctx = canvas.getContext("2d");
+
+  //是否在绘画的状态
+  var isDraw = false;
+
+  //旧的坐标
+  var oldX = 0;
+  var oldY = 0;
+
+  //初始化的线条和颜色
+  var lineColor = 'white'; //线条的颜色
+  var lineWidth = 4;  //线条的粗细
+
+  // ctx.fillStyle = "black";
+  // ctx.fillRect(0,0,canvas.width,canvas.height);
+
+
+  //绑定事件
+
+  //PC
+  canvas.addEventListener("mousedown",down);
+  canvas.addEventListener("mousemove",move);
+  canvas.addEventListener("mouseup",up);
+
+  //移动端
+  canvas.addEventListener('touchstart',down);
+  canvas.addEventListener('touchmove',move);
+  canvas.addEventListener('touchend',up);
+
+
+  //down 按下
+  function down(e)
+  {
+    //阻止元素的默认事件效果
+    e.preventDefault();
+
+    //绘画状态
+    isDraw = true;
+
+    oldX = e.pageX - 10;
+    oldY = e.pageY - 10;
+
+    var obj = { isDraw: isDraw, oldX: oldX, oldY: oldY};
+
+    //发送给服务器
+    ws.emit('down', obj);
+  }
+
+  //move 移动
+  function move(e)
+  {
+    e.preventDefault();//阻止默认事件
+
+    //针对touch事件
+    if(e.targetTouches!= undefined)
+    {
+      //获取指纹的第一个坐标
+      e = event.targetTouches[0];
+    }
+
+    //判断是否在绘画的状态中
+    if(isDraw)
+    {
+      var newX = e.pageX-10;
+      var newY = e.pageY-10;
+      ctx.beginPath();  //开始绘画
+        ctx.moveTo(oldX,oldY); //规定起点
+        ctx.lineTo(newX,newY); //连线
+        ctx.strokeStyle = lineColor; //划线的颜色
+        ctx.lineWidth = lineWidth;  //划线的粗细
+        ctx.lineCap = "round";  //线头 round圆形
+        ctx.stroke();
+      ctx.closePath(); //结束绘画
+      oldX = newX;
+      oldY = newY;
+      var obj = {newX:newX,newY:newY};
+      ws.emit('move',obj);
+    }
+  }
+
+  //up 停止绘画
+  function up(e)
+  {
+    e.preventDefault();//阻止默认事件
+    isDraw = false;
+
+    ws.emit('up',{isDraw:false});
+  }
+
+
+  var buttons = document.getElementsByTagName("button");
+
+  for(var i=0;i<buttons.length;i++)
+  {
+    buttons[i].onclick = function(e)
+    {
+      var color = this.dataset.color;
+      var width = this.dataset.linewidth;
+      var background = this.dataset.background;
+
+      if(color != undefined)
+      {
+        lineColor = color;
+        ws.emit('buttons',{lineColor:lineColor});
+        return false;
+      }
+
+      if(width != undefined)
+      {
+        lineWidth = width;
+        ws.emit('buttons', { lineWidth: lineWidth });
+      }
+
+      if(background != undefined)
+      {
+        // ctx.fillStyle = background;
+        // ctx.fillRect(0,0,canvas.width,canvas.height);
+        canvas.style.background = background;
+        ws.emit('buttons', { background: background });
+      }
+    }
+  }
+
+
+
+  //socket通信的画板功能
+
+  ws.on('down',function(obj){
+    //绘画状态
+    isDraw = obj.isDraw;
+
+    oldX = obj.oldX;
+    oldY = obj.oldY;
+  });
+
+  ws.on('up', function (obj) {
+    //绘画状态
+    isDraw = obj.isDraw;
+  });
+
+
+  ws.on('move',function(obj){
+    //判断是否在绘画的状态中
+    if (isDraw) 
+    {
+      var newX = obj.newX;
+      var newY = obj.newY;
+      ctx.beginPath();  //开始绘画
+      ctx.moveTo(oldX, oldY); //规定起点
+      ctx.lineTo(newX, newY); //连线
+      ctx.strokeStyle = lineColor; //划线的颜色
+      ctx.lineWidth = lineWidth;  //划线的粗细
+      ctx.lineCap = "round";  //线头 round圆形
+      ctx.stroke();
+      ctx.closePath(); //结束绘画
+      oldX = newX;
+      oldY = newY;
+    }
+  });
+
+
+  ws.on('buttons',function(obj){
+    if (obj.lineColor != undefined) {
+      lineColor = obj.lineColor;
+      return false;
+    }
+
+    if (obj.lineWidth != undefined) {
+      lineWidth = obj.lineWidth;
+      return false;
+    }
+
+    if (obj.background != undefined) {
+      canvas.style.background = obj.background;
+    }
+  });
+</script>
