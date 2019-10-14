@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- 优先使用 IE 最新版本和 Chrome -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../assets/home/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/home/css/style.css"/>
+	</head>
+	<body ng-app="food">				
+		<div ui-view="nav"></div>
+		<div ui-view="banner"></div>
+		<div ui-view="content"></div>
+		<div ui-view="footer"></div>
+	</body>
+</html>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../home-app.js"></script>
+<script src="../services/navFactory.js"></script>
+<script src="../services/companyFactory.js"></script>
+<script src="../services/newsFactory.js"></script>
+<script src="../services/shopFactory.js"></script>
+<script src="../services/foodFactory.js"></script>
+<script src="../services/singleFactory.js"></script>
+<script src="../routers/homeRouter.js"></script>
+<script src="../controllers/home/indexController.js"></script>
+<script src="../controllers/home/newsController.js"></script>
+<script src="../controllers/home/shopController.js"></script>
+<script src="../controllers/home/foodController.js"></script>
+<script src="../controllers/home/singleController.js"></script>
+
+

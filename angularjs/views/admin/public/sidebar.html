@@ -1,0 +1,98 @@
+<div class="admin-sidebar">
+        <ul class="am-list admin-sidebar-list">
+          <li><a ui-sref="index"><span class="am-icon-home"></span> 首页</a></li>
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span>美食系列<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
+                <li><a ui-sref="admin.food"><span class="am-icon-th"></span> 美食列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+              <li><a ui-sref="admin.food.add" class="am-cf"><span class="am-icon-check"></span>美食添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+              <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span>美食分类<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
+                  <li><a ui-sref="admin.foodcate"><span class="am-icon-th"></span>美食分类列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+                  <li><a ui-sref="admin.foodcate.add" class="am-cf"><span class="am-icon-check"></span>美食分类添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-file"></span>店面展示<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+                <li><a ui-sref="admin.shop"><span class="am-icon-th"></span> 店面列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+              <li><a ui-sref="admin.shop.add" class="am-cf"><span class="am-icon-check"></span>店面添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+              <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-file"></span>地区分类<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
+                  <li><a ui-sref="admin.region"><span class="am-icon-th"></span> 地区列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+                  <li><a ui-sref="admin.region.add" class="am-cf"><span class="am-icon-check"></span>地区分类添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-file"></span>新闻咨询<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
+              <li><a ui-sref="admin.news"><span class="am-icon-th"></span> 新闻列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+              <li><a ui-sref="admin.news.add" class="am-cf"><span class="am-icon-check"></span>新闻添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            </ul>
+          </li>
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span>关于我们<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav5">
+              <li><a ui-sref="admin.company"><span class="am-icon-th"></span>公司列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+              <li><a ui-sref="admin.company.add" class="am-cf"><span class="am-icon-check"></span>公司添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            </ul>
+          </li>
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{target: '#collapse-nav6'}"><span class="am-icon-file"></span>友情链接<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav6">
+              <li><a ui-sref="admin.link"><span class="am-icon-th"></span>链接列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+              <li><a ui-sref="admin.link.add" class="am-cf"><span class="am-icon-check"></span>链接添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            </ul>
+          </li> 
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{target: '#collapse-nav7'}"><span class="am-icon-file"></span>导航<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav7">
+              <li><a ui-sref="admin.nav"><span class="am-icon-th"></span> 导航列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+              <li><a ui-sref="admin.nav.add" class="am-cf"><span class="am-icon-check"></span>导航添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            </ul>
+          </li>
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{target: '#collapse-nav8'}"><span class="am-icon-file"></span>公司简介<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav8">
+              <li><a ui-sref="admin.single"><span class="am-icon-th"></span> 简介列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+              <li><a ui-sref="admin.single.add" class="am-cf"><span class="am-icon-check"></span>简介添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            </ul>
+          </li>
+          <li class="admin-parent">
+              <a class="am-cf" data-am-collapse="{target: '#collapse-nav9'}"><span class="am-icon-file"></span>轮播<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+              <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav9">
+                <li><a ui-sref="admin.banner"><span class="am-icon-th"></span> 轮播列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+                <li><a ui-sref="admin.banner.add" class="am-cf"><span class="am-icon-check"></span>轮播添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+              </ul>
+            </li>
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{target: '#collapse-nav10'}"><span class="am-icon-file"></span>网站设置<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav10">
+              <li><a ui-sref="admin.setting"><span class="am-icon-th"></span> 设置列表<span class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+              <li><a ui-sref="admin.setting.add" class="am-cf"><span class="am-icon-check"></span>设置添加<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            </ul>
+          </li>
+
+          <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+        </ul>
+    
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+          <div class="am-panel-bd">
+            <p><span class="am-icon-bookmark"></span> 公告</p>
+            <p>时光静好，与君语；细水流年，与君同。—— Amaze</p>
+          </div>
+        </div>
+    
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+          <div class="am-panel-bd">
+            <p><span class="am-icon-tag"></span> wiki</p>
+            <p>Welcome to the Amaze wiki!</p>
+          </div>
+        </div>
+</div>
