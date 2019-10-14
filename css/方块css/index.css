@@ -1,0 +1,133 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+ul,li{
+    list-style: none;
+}
+
+body{
+	color:#333;
+	padding:20px;
+	text-align:center;
+}
+
+input{
+    display: none;
+}
+
+label{
+    margin-top:150px;
+	margin-left:10px;
+	display:inline-block;
+	width:80px;
+	height:30px;
+	line-height:30px;
+	border:1px solid #000;
+    border-radius:10px;
+    cursor: pointer;
+}
+
+.clear{
+    margin:120px auto;
+}
+
+
+/* 3D盒子元素 */
+/* .view 是 3D空间 perspective距离  .box是 3D元素 transform-style */
+.view{
+    perspective:1000px;
+    width:250px;
+    height:250px;
+    text-align:center;
+    display: inline-block;
+}
+
+.box{
+    width:100%;
+    height:100%;
+    transform-style: preserve-3d; 
+    display: inline-block;
+    position: relative;
+    text-align:center;
+    transition: all .7s ease-in-out;
+    transform:rotateX(-15deg) rotateY(20deg);
+}
+
+.face{
+    overflow: hidden;
+    position: absolute;
+    border: 1px solid #888;
+    background: #FFF;
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.1), 0 0 50px rgba(0, 0, 0, 0.3);
+    color: #333;
+    line-height: 250px;
+    opacity: 0.8;
+    width:250px;
+    height:250px;
+    backface-visibility: visible;  /*背面是否可见*/
+}
+
+.face img{
+    width:100%;
+    height:100%;
+}
+
+.front{
+    transform:translate3d(0,0,125px);
+}
+
+.back{
+    transform:rotateY(180deg) translate3d(0, 0, 125px);
+}
+
+.left{
+    transform:rotateY(-90deg) translate3d(0,0,125px);
+}
+
+.right{
+    transform:rotateY(90deg) translate3d(0,0,125px);
+}
+
+.top{
+    transform:rotateX(90deg) translate3d(0,0,125px);
+}
+
+.bottom{
+    transform:rotateX(-90deg) translate3d(0,0,125px);
+}
+
+#left:checked ~ .view .box{
+    transform:rotateY(90deg);
+}
+
+#right:checked ~ .view .box{
+    transform:rotateY(-90deg);
+}
+
+#top:checked ~ .view .box{
+    transform:rotateX(-90deg);
+}
+
+#bottom:checked ~ .view .box{
+    transform:rotateX(90deg);
+}
+
+
+#front:checked ~ .view .box{
+    transform:rotateX(-15deg) rotateY(20deg);
+}
+
+#back:checked ~ .view .box{
+    transform:rotateY(180deg);
+}
+
+#big:checked ~ .view .box{
+    transform:rotateX(-15deg) rotateY(20deg) scale3d(1.5,1.5,1.5);
+}
+
+#small:checked ~ .view .box{
+    transform:rotateX(-15deg) rotateY(20deg) scale3d(0.5,0.5,0.5);
+}
+

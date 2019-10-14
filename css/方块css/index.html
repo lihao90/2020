@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <input type="radio" name="radio" id="front" />
+    <label for="front">正面</label>
+
+    <input type="radio" name="radio" id="left" />
+    <label for="left">左边</label>
+
+    <input type="radio" name="radio" id="right" />
+    <label for="right">右边</label>
+
+    <input type="radio" name="radio" id="top"  />
+    <label for="top">顶部</label>
+
+    <input type="radio" name="radio" id="bottom"  />
+    <label for="bottom">底部</label>
+
+    <input type="radio" name="radio" id="back"  />
+    <label for="back">背面</label>
+
+    <input type="radio" name="radio" id="big"  />
+    <label for="big">放大</label>
+
+    <input type="radio" name="radio" id="small"  />
+    <label for="small">缩小</label>
+
+    <div class="clear"></div>
+
+    <!-- 将正方体放到一个空间里面去 -->
+    <!-- 在把这个空间设置为3D 原理是设置空间的距离而已 -->
+    <div class="view">
+        <div class="box">
+            <div class="face front">
+                <img src="./image/image1.jpg" />
+            </div>
+            <div class="face back">
+                    <img src="./image/image2.jpg" />
+            </div>
+            <div class="face left">
+                    <img src="./image/image3.jpg" />
+            </div>
+            <div class="face right">
+                    <img src="./image/image4.jpg" />
+            </div>
+            <div class="face top">
+                    <img src="./image/image5.jpg" />
+            </div>
+            <div class="face bottom">
+                    <img src="./image/image6.jpg" />
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

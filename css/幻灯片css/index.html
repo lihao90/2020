@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        ul,li{
+            list-style:none;
+        }
+
+        body{
+            overflow: hidden;
+            background:#000;
+            font-size:15px;
+            color:#aa3e03;
+            font-weight:400;
+        }
+
+        .Name{
+            position: fixed;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+        }
+
+        .Name li span{
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:100%;
+            height:100%;
+            opacity: 0;
+            animation:image 30s linear infinite;
+        }
+
+        .Name li span img{
+            width:100%;
+            height:100%;
+        }
+
+        .Name li div{
+            position: absolute;
+            left:0;
+            top:0;
+            width:100%;
+            color:#fff;
+            z-index:100;
+            opacity: 0;
+            animation:title 30s linear infinite;
+        }
+
+        .Name li div h3{
+            font-size:55px;
+        }
+
+        .Name li:nth-child(1) div{
+            left:50px;
+            top:20px;
+        }
+
+        .Name li:nth-child(2) div{
+            left:150px;
+            top:20px;
+        }
+
+
+        .Name li:nth-child(3) div{
+            left:400px;
+            top:300px;
+        }
+
+
+        .Name li:nth-child(4) div{
+            left:500px;
+            top:60px;
+        }
+
+
+        .Name li:nth-child(5) div{
+            left:150px;
+            top:900px;
+        }
+
+
+        .Name li:nth-child(1) span,.Name li:nth-child(1) div{
+            animation-delay: 0s;
+        }
+
+        .Name li:nth-child(2) span,.Name li:nth-child(2) div{
+            animation-delay: 6s;
+        }
+
+        .Name li:nth-child(3) span,.Name li:nth-child(3) div{
+            animation-delay: 12s;
+        }
+
+        .Name li:nth-child(4) span,.Name li:nth-child(4) div{
+            animation-delay: 18s;
+        }
+
+        .Name li:nth-child(5) span,.Name li:nth-child(5) div{
+            animation-delay: 24s;
+        }
+
+        @keyframes image {
+            0%{ opacity:0;}
+            8%{ opacity:1; }
+            17%{ opacity:1; }
+            27%{ opacity:0; }
+            100%{ opacity:0;}
+        }
+
+        
+        
+        @keyframes title {
+            0%{ opacity:0;}
+            8%{ opacity:1; }
+            17%{ opacity:1; }
+            27%{ opacity:0; }
+            100%{ opacity:0;}
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="Name">
+        <li>
+            <span><img src="images/slide1.jpg"/></span>
+            <div><h3>马卡龙1</h3></div>
+        </li> 
+        <li>
+            <span><img src="images/slide2.jpg"/></span>
+            <div><h3>马卡龙2</h3></div>
+        </li>
+        <li>
+            <span><img src="images/slide3.jpg"/></span>
+            <div><h3>马卡龙3</h3></div>
+        </li> 
+        <li>
+            <span><img src="images/slide4.jpg"/></span>
+            <div><h3>马卡龙4</h3></div>
+        </li>
+        <li>
+            <span><img src="images/slide5.jpg"/></span>
+            <div><h3>马卡龙5</h3></div>
+        </li>
+
+    </ul>
+</body>
+</html>
