@@ -1,0 +1,101 @@
+body,div,ol,ul,li,p,h1,h2,h3,h4,h5,h6{
+	margin:0;
+	padding:0;
+	font-weight: normal;
+}
+ol,li,ul{
+	list-style: none;
+}
+p,h1,h2,h3,h4,h5,h6{
+	text-align: center;
+}
+p{
+	color:#8c9398;
+}
+a{
+	text-decoration: none;
+}
+
+
+/* 设置自定义的字体 */
+@font-face{
+	font-family:Ltb;
+	src:url('../font/Lato-Bold.ttf');
+}
+@font-face{
+	font-family:Osb;
+	src:url('../font/OpenSans-Bold.ttf');
+}
+@font-face{
+	font-family:Osl;
+	src:url('../font/OpenSans-Light.ttf');
+}
+@font-face{
+	font-family:Ossb;
+	src:url('../font/OpenSans-Semibold.ttf');
+}
+@font-face{
+	font-family:Osi;
+	src:url('../font/OpenSans-Italic.ttf');
+}
+
+body{
+	font-family: Osl;
+	color:#353535;
+}
+
+html{
+	font-size: 16px;
+}
+
+.container{
+    margin:0 auto;
+}
+
+.clear::after{
+    content:"";
+    display: block;
+    width:0;
+    height:0;
+    overflow: hidden;
+    clear:both;
+}
+
+
+
+
+
+/* 小屏幕 */
+/* 媒体查询 屏幕 and (992px<=x) */
+@media screen and (min-width:768px){
+	.container{
+		width:720px;
+	}
+}
+@media screen and (min-width:992px){
+	.container{
+		width:970px;
+	}
+}
+
+@media screen and (min-width:1040px){
+	.container{
+		width:1010px;
+	}
+}
+
+
+@media screen and (min-width:1200px){
+	.container{
+		width:1170px;
+	}
+}
+
+/* 大屏幕下面 */
+/* 媒体查询 屏幕 and (1500px<=x) */
+@media screen and (min-width:1500px)
+{
+    .container{
+        width:1500px;
+    }
+}
