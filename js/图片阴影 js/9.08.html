@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="./9.08.css">
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<img src="image/image1.jpeg"/>
+			<div class="box"></div>
+		</div>
+		<div class="content">
+			<img src="image/image2.jpeg"/>
+			<div class="box"></div>
+		</div>
+		<div class="content">
+			<img src="image/image3.jpeg"/>
+			<div class="box"></div>
+		</div>
+		<div class="content">
+			<img src="image/image4.jpeg"/>
+			<div class="box"></div>
+		</div>
+		<div class="content">
+			<img src="image/image5.jpeg"/>
+			<div class="box"></div>
+		</div>
+		<div class="content">
+			<img src="image/image6.jpeg"/>
+			<div class="box"></div>
+		</div>
+		<div class="content">
+			<img src="image/image7.jpeg"/>
+			<div class="box"></div>
+		</div>
+		<div class="content">
+			<img src="image/image8.jpeg"/>
+			<div class="box"></div>
+		</div>
+		<div class="content">
+			<img src="image/image9.jpeg"/>
+			<div class="box"></div>
+		</div>
+	</div>	
+</body>
+</html>
+<script src="./js/jquery.js"></script>
+<script>
+	$(document).ready(function(){
+		$(".content").bind('mouseenter mouseleave',function(e){
+
+			//图片div的宽和高
+			var w = $(this).width();
+			var h = $(this).height();
+
+			//外左边距，上边距
+			var left = $(this).offset().left;
+			var top = $(this).offset().top;
+
+			//判断鼠标是在元素的左边，右边 | 上边 下边
+			var x = (e.pageX - left -(w/2));
+			var y = (e.pageY - top - (h/2));
+
+			//https://www.cnblogs.com/liuyanxia/p/5666892.html
+			var rotate =Math.round(((Math.atan2(y, x) * (180/Math.PI))+180)/90)%4; 
+
+			// 0 左 1 上 2 右 3 下
+			if(e.type == "mouseenter")
+			{
+				switch(rotate)
+				{
+					case 0:
+						$(this).find(".box").css({"display":"block","left":-w+"px","top":"0px"}).animate({"left":"0px"});
+						break;
+					case 1:
+						$(this).find(".box").css({"display":"block","left":"0px","top":-h+"px"}).animate({"top":"0px"});
+						break;
+					case 2:
+						$(this).find(".box").css({"display":"block","left":w+"px","top":"0px"}).animate({"left":"0px"});
+						break;
+					case 3:
+						$(this).find(".box").css({"display":"block","left":"0px","top":h+"px"}).animate({"top":"0px"});
+						break;
+
+				}
+			}else if(e.type == "mouseleave")
+			{
+				switch(rotate)
+				{
+					case 0:
+						$(this).find(".box").animate({"left":-w+"px"});
+						break;
+					case 1:
+						$(this).find(".box").animate({"top":-h+"px"});
+						break;
+					case 2:
+						$(this).find(".box").animate({"left":w+"px"});
+						break;
+					case 3:
+						$(this).find(".box").animate({"top":h+"px"});
+						break;
+
+
+				}
+			}
+
+		});
+	});
+</script>

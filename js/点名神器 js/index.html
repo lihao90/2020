@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin:0;padding:0;font-family: "微软雅黑";}
+        a,img{border:0;}
+        .box{
+            width: 80%;
+            margin: 30px auto;
+            background: #efefef;
+            
+        }
+        #name{
+            padding-bottom: 20px;
+            font-size: 40px;
+            font-weight: 900;
+            text-align: center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            }
+        #name2{
+            padding: 60px;
+            font-size: 40px;
+            font-weight: 900;
+            text-align: center;
+            color: #bbb;
+            text-shadow: -1px -1px #fff, 1px 1px #333;
+            }
+        #name1{
+            padding: 60px;
+            font-size: 30px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 1px 0 #ccc, 
+            0 2px 0 #c9c9c9, 0 3px 0 #bbb, 
+            0 4px 0 #b9b9b9, 0 5px 0 #aaa, 
+            0 6px 1px rgba(0,0,0,0.1), 
+            0 0 5px rgba(0,0,0,0.1),
+            0 1px 3px rgba(0,0,0,0.3),
+            0 3px 5px rgba(0,0,0,0.2),
+            0 5px 10px rgba(0,0,0,0.25);
+            }
+        h1{
+            height: 70px;
+            line-height: 70px;
+            background: #ccc;
+            text-align: center;
+            -webkit-text-stroke: 1px #000;
+            -webkit-text-fill-color: transparent;
+        }
+        #bt{
+            
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+            background: deepskyblue;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            }
+        .img{
+            width: 300px;
+            height: 300px;
+            border-radius: 50px;
+            margin: 20px auto;
+            overflow: hidden;
+            box-shadow: 2px 10px 20px rgba(0,0,0,0.8);
+        }
+        #beauty{
+            width: 300px;
+            height: 300px;
+            
+        }
+        </style>
+</head>
+<body id="bodybj">
+        <div class="box">
+            <h1>点名神器</h1>
+            <div class="img"><img src="img/1.jpg" id="beauty" alt="" /></div>
+            <div id="bt" onclick="doit()">开始点名</div>
+        </div>
+</body>
+</html>
+<script>
+    var timer = null;
+    function doit()
+    {
+        var bt =document.getElementById('bt');
+        
+
+        if(timer==null)
+        {
+            //第一次访问
+            //innerHTML 修改该元素的html内容部分
+            bt.innerHTML = "停止抽奖";
+            bt.style.backgroundColor = "palevioletred";
+            show();  //开始抽奖
+        }else{
+            bt.innerHTML = "开始抽奖";
+            bt.style.backgroundColor = "deepskyblue";
+            clearTimeout(timer);  //清除循环定时器
+            timer = null;
+        }
+
+    }
+
+
+    function show()
+    {
+        var beauty = document.getElementById("beauty");
+
+        //随机的索引值
+        var num = Math.floor(Math.random()*9);
+        beauty.src = "./img/"+num+".jpg";
+        timer = setTimeout(show,1);
+    }
+</script>
