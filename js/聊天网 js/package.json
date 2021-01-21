@@ -22,7 +22,7 @@
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemailer-wellknown": "^0.2.3",
     "opn": "^6.0.0",
-    "socket.io": "~0.9.16",
+    "socket.io": "~2.4.0",
     "xtemplate": "^5.0.10",
     "xtpl": "^3.4.2"
   },
